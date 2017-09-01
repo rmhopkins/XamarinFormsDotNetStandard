@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProfilesDemo.Views.DetailPage"
+             Title="Personal Profile">
+    <ContentPage.Content>
+        <ScrollView Padding="10">
+            <StackLayout Spacing="10" BackgroundColor="White">
+                <Image Source="{Binding Profile.Avatar}" HeightRequest="200" WidthRequest="200"/>
+                <Label Text="{Binding Profile.Name}" FontSize="24"/>
+                <Label Text="{Binding Profile.Title}" TextColor="Purple"/>
+                <Label Text="{Binding Profile.Description}"/>
+                <!--
+                  <StackLayout Orientation="Horizontal">
+                    <Label Text="Rating:" VerticalOptions="Center"/>
+                    <Picker SelectedIndex="{Binding Profile.Rating}" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
+                      <Picker.Items>
+                        <x:String>Brilliant</x:String>
+                        <x:String>Awesome</x:String>
+                        <x:String>Truly Amazing</x:String>
+                      </Picker.Items>
+                    </Picker>
+                  </StackLayout>
+                
+                <Label HorizontalTextAlignment="Center" FontSize="24" Text="{Binding Happiness}" />
+                <Button Text="How Happy?" Command="{Binding GetHappinessCommand}" BackgroundColor="#2196F3" TextColor="#FFFFFF" />
+                -->
+                <Button Text="Speak" x:Name="ButtonSpeak" Command="{Binding TextToSpeechCommand}" BackgroundColor="#2196F3" TextColor="#FFFFFF" />
+                <Button Text="Go to Website" x:Name="ButtonWebsite" Command="{Binding OpenWebsiteCommand}" BackgroundColor="#2196F3" TextColor="#FFFFFF" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

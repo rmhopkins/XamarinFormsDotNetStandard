@@ -2,18 +2,23 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using ProfilesDemo.Services;
 
 using Xamarin.Forms;
+using ProfilesDemo.Views;
 
 namespace ProfilesDemo
 {
 	public partial class App : Application
 	{
-		public App ()
+        public AzureDataService DataService { get; set; }
+
+        public App ()
 		{
 			InitializeComponent();
-
-			MainPage = new ProfilesDemo.MainPage();
+            AzureDataService.DefaultInstance.Initialize();
+            var content = new PeopleListPage();
+            MainPage = new NavigationPage(content);
 		}
 
 		protected override void OnStart ()

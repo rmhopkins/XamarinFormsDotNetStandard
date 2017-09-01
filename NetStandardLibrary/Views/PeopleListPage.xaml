@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+             x:Class="ProfilesDemo.Views.PeopleListPage"
+             Title="Xamarin People"
+             x:Name="ThePage">
+    <ContentPage.Content>
+        <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <StackLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+                <ListView x:Name="ListViewSpeakers"
+           ItemsSource="{Binding ProfileList}"
+           SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+           CachingStrategy = "RecycleElement"
+           RowHeight="70">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.View>
+                                    <Grid Padding="3,0" RowSpacing="5" ColumnSpacing="1" BackgroundColor="#FFFFFF">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="30" />
+                                            <RowDefinition Height="30" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="70" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <controls:CircleImage Source="{Binding Avatar}" Aspect="AspectFill" BorderColor="#333333" 
+                                            BorderThickness="1" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" HorizontalOptions="Center" VerticalOptions="Center">
+                                            <controls:CircleImage.WidthRequest>
+                                                <OnPlatform x:TypeArguments="x:Double" iOS="60" Android="55" WinPhone="55"/>
+                                            </controls:CircleImage.WidthRequest>
+                                            <controls:CircleImage.HeightRequest>
+                                                <OnPlatform x:TypeArguments="x:Double" iOS="60" Android="55" WinPhone="55"/>
+                                            </controls:CircleImage.HeightRequest>
+                                        </controls:CircleImage>
+                                        
+                                        <Label Text="{Binding Name}" TextColor="#333333" FontSize="16" Grid.Row="0" Grid.Column="1" VerticalTextAlignment="Center" />
+                                        <Label Text="{Binding Title}" TextColor="#777777" FontSize="14" Grid.Row="1" Grid.Column="1" VerticalTextAlignment="Center" />
+                                    </Grid>
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+            <StackLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" IsEnabled="{Binding IsBusy}" IsVisible="{Binding IsBusy}">
+                <ActivityIndicator HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" Color="Black" />
+            </StackLayout>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>
