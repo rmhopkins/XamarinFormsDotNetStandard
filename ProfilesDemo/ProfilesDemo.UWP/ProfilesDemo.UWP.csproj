@@ -147,6 +147,12 @@
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\NetStandardLibrary\NetStandardLibrary.csproj">
+      <Project>{55d29f04-83f0-470f-b3bd-f669017aaf5c}</Project>
+      <Name>NetStandardLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
